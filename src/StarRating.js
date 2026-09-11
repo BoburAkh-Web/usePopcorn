@@ -10,7 +10,12 @@ const starContainerStyle = {
   gap: "4px",
 };
 
-function StarRating({ maxRating = 5, color = "#fcc419", size = "48" }) {
+function StarRating({
+  maxRating = 5,
+  color = "#fcc419",
+  size = "48",
+  onSetRating,
+}) {
   const [rating, setRating] = useState(0);
   const [tempRating, setTempRating] = useState(0);
   const textStyle = {
@@ -21,6 +26,7 @@ function StarRating({ maxRating = 5, color = "#fcc419", size = "48" }) {
   };
   function handleRating(rating) {
     setRating(rating);
+    if (onSetRating) onSetRating(rating);
   }
 
   return (
